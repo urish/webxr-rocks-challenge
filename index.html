@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebXR Rocks!</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        div {
+            margin-bottom: 16px;
+        }
+
+        #challengeInput {
+            padding: 4px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>The WebXR Rocks A11Y Challenge</h1>
+    <div>
+        <input type="text" id="challengeInput" 
+            oninput="onInput(event)"/>
+    </div>
+    <div>
+        Timer: <span id="timer">-</id>
+    </div>
+    <button onclick="resetTimer()">Reset</button>
+    <script>
+        const timerDiv = document.querySelector('#timer');
+        const challengeInput = document.querySelector('#challengeInput');
+        let startTime = null;
+
+        function updateTimer() {
+            if (startTime) {
+                const delta = performance.now() - startTime;
+                timerDiv.textContent = `${Math.round(delta)}ms`;
+                requestAnimationFrame(updateTimer);
+            }
+        }
+
+        function resetTimer() {
+            startTime = null;
+            timerDiv.textContent = '-';
+            challengeInput.value = '';
+        }
+
+        function onInput(e) {
+            if (startTime) {
+                if (['webxr rocks!', 'webvr rocks!'].includes(e.target.value.toLowerCase())) {
+                    startTime = null;
+                }
+            } else {
+                startTime = performance.now();
+                updateTimer();
+            }
+        }
+    </script>
+</body>
+</html>
