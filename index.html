@@ -23,11 +23,15 @@
 <body>
     <h1>The WebXR Rocks A11Y Challenge</h1>
     <div>
+        Cover your eyes, then type "WebXR Rocks!" in the box below using your 
+        smartphone keyboard and a screen reader.
+    </div>
+    <div>
         <input type="text" id="challengeInput" 
             oninput="onInput(event)"/>
     </div>
     <div>
-        Timer: <span id="timer">-</id>
+        Time: <span id="timer">-</id>
     </div>
     <button onclick="resetTimer()">Reset</button>
     <script>
@@ -51,7 +55,7 @@
 
         function onInput(e) {
             if (startTime) {
-                if (['webxr rocks!', 'webvr rocks!'].includes(e.target.value.toLowerCase())) {
+                if (['webxr rocks!', 'webvr rocks!'].includes(e.target.value.toLowerCase().trim())) {
                     startTime = null;
                 }
             } else {
