@@ -1,4 +1,3 @@
-# WebVR Rocks A11Y Challange
+# WebVR Rocks A11Y Challange - bit.ly/xr-a11y
 
-[Try the challenge](https://urish.github.io/webxr-rocks-challenge)
-
+[Try the challenge](http://bit.ly/xr-a11y)
