@@ -48,7 +48,6 @@
             if (startTime) {
                 const delta = performance.now() - startTime;
                 timerDiv.textContent = `${Math.round(delta)}ms`;
-                requestAnimationFrame(updateTimer);
             }
         }
 
@@ -65,9 +64,11 @@
                 }
             } else {
                 startTime = performance.now();
-                updateTimer();
             }
+            updateTimer();
         }
+
+        setInterval(updateTimer, 100);
     </script>
 </body>
 </html>
